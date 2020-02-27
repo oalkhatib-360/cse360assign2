@@ -32,8 +32,8 @@ public class SimpleList {
 	 */
 	public void add(int num) {
 		if (count == 10) {
-			double newSize = 10*1.5;
-			list = new int[(int) newSize];
+			int newSize = (int) (10*1.5);
+			list = new int[newSize];
 		}
 		int[] tempArr = new int[count];
 		for (int index = 0; index < count; index++) {
@@ -73,6 +73,58 @@ public class SimpleList {
 		}
 		return count;
 	}
+	/**
+	 * This method is used to append an element to the back of the list.
+	 * @param appNum This is the number parameter taken that will be appended to the end of the list.
+	 */
+	public void append(int appNum){
+		if(count == 10){
+			int newSize = (int) (10*1.5);
+			list = new int[newSize];
+			list[newSize] = appNum;
+			count++;
+		}else {
+			list[10] = appNum;
+		}
+		
+		
+	}
+	/**
+	 * This method is used to return the first number/element in the list.
+	 * @return list[0] This is the first element in the array
+	 */
+	public int first() {
+		if(count != 0) {
+			return list[0];
+		}else {
+			return -1;
+		}
+	}
+	/**
+	 * This method is used to return the last number/element in the list.
+	 * @return list[10] This is the last element in the array assuming size 10 as asked for.
+	 */
+	public int last() {
+		if(count != 0) {
+			return list[10];
+		}else {
+			return -1;
+		}
+	}
+	/**
+	 * This method is used to count the number of possible locations in the list.
+	 * @return size This is the number of possible locations in the list
+	 */
+	public int size() {
+		for (int index = 0; index < 10; index++) {
+			if (getList()[index] != 0) {
+				count++;
+			}
+		}
+		int size = 10-count;
+		return size;
+	}
+	
 	/**
 	 * This method is used to convert the list into string format, replacing the , with " "
 	 * @return listToStr This is the string that contains the array.
