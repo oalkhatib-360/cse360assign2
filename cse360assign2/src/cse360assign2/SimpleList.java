@@ -32,8 +32,8 @@ public class SimpleList {
 	 */
 	public void add(int num) {
 		if (count == 10) {
-			list[9] = 0;
-			count--;
+			double newSize = 10*1.5;
+			list = new int[(int) newSize];
 		}
 		int[] tempArr = new int[count];
 		for (int index = 0; index < count; index++) {
