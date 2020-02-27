@@ -15,13 +15,14 @@ import java.util.Arrays;
 public class SimpleList {
 	private int[] list;
 	private int count;
+	int size; 				//Size of the array. Specification for Assign1 says to use size 10, whoever this assignment appears to assume a dynamic array size.
 	
 	/**
 	 * This method is used to create an array of size 10 and set the counter to 0
 	 */
 	public SimpleList() {
 		
-		list = new int[10];
+		list = new int[size];
 		count = 0;
 
 	}
@@ -31,8 +32,8 @@ public class SimpleList {
 	 * @param num This is the number parameter taken that will be added to the array.
 	 */
 	public void add(int num) {
-		if (count == 10) {
-			int newSize = (int) (10*1.5);
+		if (count == size) {
+			int newSize = (int) (size*1.5);
 			list = new int[newSize];
 		}
 		int[] tempArr = new int[count];
@@ -66,7 +67,7 @@ public class SimpleList {
 	 * @return count This is the count of elements in the array
 	 */
 	public int count() {
-		for (int index = 0; index < 10; index++) {
+		for (int index = 0; index < size; index++) {
 			if (getList()[index] != 0) {
 				count++;
 			}
@@ -78,13 +79,13 @@ public class SimpleList {
 	 * @param appNum This is the number parameter taken that will be appended to the end of the list.
 	 */
 	public void append(int appNum){
-		if(count == 10){
-			int newSize = (int) (10*1.5);
+		if(count == size){
+			int newSize = (int) (size*1.5);
 			list = new int[newSize];
 			list[newSize] = appNum;
 			count++;
 		}else {
-			list[10] = appNum;
+			list[size-1] = appNum;
 		}
 		
 		
@@ -102,11 +103,11 @@ public class SimpleList {
 	}
 	/**
 	 * This method is used to return the last number/element in the list.
-	 * @return list[10] This is the last element in the array assuming size 10 as asked for.
+	 * @return list[size-1] This is the last element in the array assuming size as asked for.
 	 */
 	public int last() {
 		if(count != 0) {
-			return list[10];
+			return list[size-1];
 		}else {
 			return -1;
 		}
@@ -116,13 +117,13 @@ public class SimpleList {
 	 * @return size This is the number of possible locations in the list
 	 */
 	public int size() {
-		for (int index = 0; index < 10; index++) {
+		for (int index = 0; index < size; index++) {
 			if (getList()[index] != 0) {
 				count++;
 			}
 		}
-		int size = 10-count;
-		return size;
+		int locations = size-count;
+		return locations;
 	}
 	
 	/**
